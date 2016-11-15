@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:div styleClass="w3-container w3-center">
+ <h3>My Profile</h3>
+</xp:div>	</xp:view>

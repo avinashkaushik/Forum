@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+
+
+
+    
+  <ul class="w3-ul">
+    <li>
+    	<xp:button value="All Topics" id="button7">
+
+    		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "all_topics"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    		<xp:eventHandler event="onclick" submit="true"
+    			refreshMode="partial">
+    			<xp:this.action>
+    				<xp:openPage name="/home.xsp?page=all_topics"></xp:openPage>
+    			</xp:this.action>
+    		</xp:eventHandler>
+    	</xp:button></li>
+    <li>    	<xp:button value="Create New Topic" id="button6">
+        		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "create_new_topic"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
+    		<xp:this.action>
+    			<xp:openPage name="/home.xsp?page=create_new_topic"></xp:openPage>
+    		</xp:this.action></xp:eventHandler>
+    	</xp:button></li>
+    <li>
+    	<xp:button value="My Topics" id="button5"
+    		>
+    		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "my_topics"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    	    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
+    	    		<xp:this.action>
+    	    			<xp:openPage name="/home.xsp?page=my_topics"></xp:openPage>
+    	    		</xp:this.action></xp:eventHandler></xp:button></li>
+    <li>	
+    <xp:button value="My Profile" id="button3"
+    		>
+    		    		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "my_profile"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    	    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
+    	    		<xp:this.action>
+    	    			<xp:openPage name="/home.xsp?page=my_profile"></xp:openPage>
+    	    		</xp:this.action></xp:eventHandler></xp:button></li>
+  </ul>
+</xp:view>
