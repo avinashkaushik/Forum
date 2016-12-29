@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="6525806C002C42C0" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="22a" sequence="4" unid="E219CB3AFEF1F3B965258098002A53BF">
+<created><datetime>20161229T131219,51+0530</datetime></created>
+<modified><datetime>20161229T131219,72+0530</datetime></modified>
+<revised><datetime>20161229T131219,71+0530</datetime></revised>
+<lastaccessed><datetime>20161229T131219,72+0530</datetime></lastaccessed>
+<addedtofile><datetime>20161229T131219,52+0530</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=avinash arvind kaushik/O=dot</name></updatedby>
+<wassignedby><name>CN=avinash arvind kaushik/O=dot</name></wassignedby>
+<item name="$TITLE"><text>cc_leftNavigation.xsp</text></item>
+<item name="$Flags"><text>gC~4;</text></item>
+
+
+<item name="$FileNames" sign="true"><text>cc_leftNavigation.xsp</text></item>
+
+</note>

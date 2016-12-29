@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+<footer class="w3-container w3-teal w3-center" >
+<h4>@ 2016 DOt . Softwares</h4>
+  <p>www.dotsoftwares.com</p>
+</footer>
+</xp:view>

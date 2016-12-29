@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note default='true' class='icon' xmlns='http://www.lotus.com/dxl' version='9.0'
  maintenanceversion='1.0' replicaid='6525806C002C42C0'>
-<noteinfo noteid='11a' unid='37EE3349D00713376525806C002C42E1' sequence='3'>
+<noteinfo noteid='11a' unid='37EE3349D00713376525806C002C42E1' sequence='15'>
 <created><datetime>20161115T133327,05+0530</datetime></created>
-<modified><datetime>20161115T133327,14+0530</datetime></modified>
-<revised><datetime>20161115T133327,13+0530</datetime></revised>
-<lastaccessed><datetime>20161115T133327,14+0530</datetime></lastaccessed>
+<modified><datetime>20161115T164734,12+0530</datetime></modified>
+<revised><datetime>20161115T164734,11+0530</datetime></revised>
+<lastaccessed><datetime>20161115T164734,12+0530</datetime></lastaccessed>
 <addedtofile><datetime>20161115T133327,09+0530</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=avinash arvind kaushik/O=dot</name></updatedby>
+<wassignedby><name>CN=avinash arvind kaushik/O=dot</name></wassignedby>
 <item name='IconBitmap' summary='true'>
 <rawitemdata type='6'>
 AiAgAQAA///////wD///4Af//8AD//4AAH/8AAA/+AAAH/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAA
@@ -24,6 +25,9 @@ EREdd3fRERER8AAAAAAA////Ed3dEf///wAAAAAAAAAAAPERER8AAAAAAAAAAAAAAAAP///wAAAA
 AAAAUEECICABAAD/////+A4DgA==
 </rawitemdata></item>
 <item name='$Daos'><text>0</text></item>
-<item name='$Flags'><text>J</text></item>
-<item name='$TITLE'><text>Forum</text></item></note>
+<item name='$TITLE'><text>Forum</text></item>
+<item name='$Flags'><text>J?</text></item>
+<item name='$LaunchXPageRunOnServer'><text>0</text></item>
+<item name='$FlagsNoRefresh'><text>rv</text></item>
+<item name='$DefaultClientXPage'><text>home.xsp</text></item></note>
 

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:div styleClass="w3-container w3-center">
+
+	</xp:div>
+	<xp:div styleClass="w3-container">
+		<xp:button value="NewChat" id="find" rendered="false">
+		</xp:button>
+		<xp:div styleClass="" id="newfriend">
+			<xp:button value="Label" id="friendList" rendered="false">
+				<xp:eventHandler event="onclick" submit="false">
+					<xp:this.script><![CDATA[ var editID = (#{id:friendList1}); 
+alert(editID);
+document.getElementById(editID).onclick();
+]]></xp:this.script>
+				</xp:eventHandler>
+			</xp:button>
+			
+			<xp:inputText style="display:none;" id="findfriend"><xp:eventHandler event="onchange" submit="true" refreshMode="partial">
+	<xp:this.action>
+
+
+		<xp:actionGroup>
+			<xp:actionGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</xp:actionGroup>
+
+			<xp:openPage>
+				<xp:this.name><![CDATA[#{javascript:
+var friend=getComponent("findfriend").getValue();
+var chatFriend= @Name("[CN]", friend );
+
+
+var abc= " ";
+
+var loggedInUser =  @Name("[CN]", @UserName());
+var chatList = loggedInUser+"|" + chatFriend
+var rightSide = @Right(chatList,"|");
+var leftside = @Left(chatList,"|");
+var friendsPairName= rightSide + "|" + leftside;
+var friendsPairNameOpp= leftside + "|" + rightSide;
+//view.postScript("alert('"+friendsPairName+"')")
+//view.postScript("alert('"+friendsPairNameOpp+"')")
+var v:NotesView = database.getView("allDocumentsByFriends");
+var dc:NotesDocumentCollection = v.getAllDocumentsByKey(friendsPairName);
+var dc1:NotesDocumentCollection = v.getAllDocumentsByKey(friendsPairNameOpp);
+
+//view.postScript("alert('"+dc.getCount()+"')")
+//view.postScript("alert('"+dc1.getCount()+"')")
+if(dc.getCount() > 0){
+    var doc:NotesDocument = dc.getFirstDocument();
+    var docId=doc.getUniversalID();
+    	return"home.xsp?page=chats&chat="+abc+" &documentId="+ docId;
+    
+    
+}else if(dc1.getCount() > 0){
+   var doc1:NotesDocument = dc1.getFirstDocument();
+   var docId1=doc1.getUniversalID();
+    	return"home.xsp?page=chats&chat="+abc+" &documentId="+ docId1;
+}else{
+  
+var error = "Select Other User";
+if(loggedInUser == chatFriend)
+{
+getComponent("error1").setRendered(true);
+return false;
+}else
+{
+
+var chatFriends = loggedInUser+"|" + chatFriend;
+
+var doc:NotesDocument = database.createDocument();
+doc.replaceItemValue("Form", "message");
+doc.replaceItemValue("chatFriendsName",chatFriends);
+doc.save();
+
+var docId = doc.getUniversalID();
+
+var chatUrl= "home.xsp?page=chats&chat="+abc+" &documentId="+ docId;
+return chatUrl;
+}
+}
+
+
+
+/*
+var v:NotesView = database.getView("allDocumentsByFriends");
+var dc:NotesDocumentCollection = v.getAllDocumentsByKey(friends);
+
+var dc1:NotesDocumentCollection = v.getAllDocumentsByKey(friends1);
+
+
+if (dc.getCount() > 0 || dc1.getCount() > 0 ) {
+
+	return"home.xsp?page=chats&chat="+abc+" &documentId="+ docId;
+}else 
+{
+  
+var error = "Select Other User";
+if(loggedInUser == chatFriend)
+{
+getComponent("error1").setRendered(true);
+return false;
+}else
+{
+
+var chatFriends = loggedInUser+"|" + chatFriend;
+
+var doc:NotesDocument = database.createDocument();
+doc.replaceItemValue("Form", "message");
+doc.replaceItemValue("chatFriendsName",chatFriends);
+doc.save();
+
+var docId = doc.getUniversalID();
+
+var chatUrl= "home.xsp?page=chats&chat="+abc+" &documentId="+ docId;
+return chatUrl;
+}
+}*/}]]></xp:this.name>
+			</xp:openPage>
+		</xp:actionGroup>
+	</xp:this.action></xp:eventHandler></xp:inputText>
+			
+		</xp:div>
+	</xp:div>
+	<xp:div styleClass="w3-panel w3-light-grey">
+	<div class="w3-row">
+  <div class="w3-col s6 w3-light-grey"><p class="w3-padding">All Chats</p></div>
+  <div class="w3-col s6 w3-light-grey "><p class="w3-right w3-padding">
+	<xe:namePicker id="friendList1" for="findfriend"
+		pickerIcon="/pluss.png">
+		<xe:this.dataProvider>
+			<xe:dominoNABNamePicker></xe:dominoNABNamePicker>
+		</xe:this.dataProvider>
+	</xe:namePicker></p></div>
+</div>
+
+
+	</xp:div>
+	<xp:div>
+	<xp:div style="width:100%;text-align:center" >
+	<xp:label value="You Cannot Chat With Yourself" id="error1"
+		style="color:rgb(255,0,0)" rendered="false">
+	</xp:label>
+	</xp:div>
+			<xp:table styleClass="w3-table w3-bordered">
+	
+		<xp:repeat id="repeat1" rows="30" first="0" var="vchatCollection"
+		indexVar="n">
+		<xp:this.value><![CDATA[#{javascript:var v:NotesView = database.getView("allDocumentsByFriends");
+//view.postScript("alert('"+user+"')")
+
+var vEntry:NotesViewEntryCollection = v.getAllEntries();
+return vEntry;
+}]]></xp:this.value>
+
+		<xp:tr styleClass="w3-hover-light-grey" style="cursor:pointer"
+			id="tr1">
+			<xp:this.rendered><![CDATA[#{javascript:var loggedInUser =  @Name("[CN]", @UserName());
+var doc:NotesDocument=vchatCollection.getDocument();
+var chatList = doc.getItemValue("chatFriendsName");
+var rightSide = @Right(chatList,"|");
+var leftside = @Left(chatList,"|");
+if(rightSide == loggedInUser || leftside == loggedInUser)
+return true;
+else
+return false;
+
+
+}]]></xp:this.rendered>
+			<td>
+				<h4>
+					<xp:text escape="true" id="computedField1">
+						<xp:this.value><![CDATA[#{javascript:var doc:NotesDocument=vchatCollection.getDocument();
+var chatList = doc.getItemValue("chatFriendsName");
+var rightSide = @Right(chatList,"|");
+var leftSide = @Left(chatList,"|");
+var currentUser = @Name("[CN]",@UserName());
+var properFriendName = "";
+if(rightSide == currentUser){
+return leftSide;
+}else{
+return rightSide;
+}
+}]]></xp:this.value>
+					</xp:text>
+				</h4>
+			</td>
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+			<xp:this.action>
+				<xp:openPage>
+					<xp:this.name><![CDATA[#{javascript:var doc:NotesDocument = vchatCollection.getDocument();
+var docId = doc.getUniversalID();
+var abc= " ";
+
+var chatUrl= "home.xsp?page=chats&chat="+abc+" &documentId="+ docId;
+return chatUrl;}]]></xp:this.name>
+				</xp:openPage>
+			</xp:this.action></xp:eventHandler></xp:tr>
+		</xp:repeat>
+	
+	</xp:table>
+	
+	</xp:div>
+</xp:view>

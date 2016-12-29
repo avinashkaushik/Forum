@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:panel>
+
+	<header class="w3-container w3-teal ">
+  <h1>FORUM</h1>
+
+  
+  <xp:link escape="true" text="Logout" id="link2"
+  	styleClass="w3-right w3-text-white">
+  <xp:this.value><![CDATA[#{javascript:return facesContext.getExternalContext().getRequest().getContextPath() + '?Logout&redirectTo=' + facesContext.getExternalContext().getRequest().getContextPath()}]]></xp:this.value></xp:link>
+  <xp:label id="link1"
+  	styleClass="w3-right w3-text-white w3-padding-right">
+  	<xp:this.value><![CDATA[#{javascript:var loggedinUser= @Name("[CN]", @UserName() ); 
+
+ var firstName = seperate(loggedinUser,3);
+ var middleName = seperate(loggedinUser,2);
+ var lastName = seperate(loggedinUser,1);
+
+ return firstName+" "+middleName+" "+lastName;
+}]]></xp:this.value>
+  </xp:label>
+	</header></xp:panel>
+	
+	</xp:view>

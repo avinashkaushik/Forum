@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="profile"
+			action="openDocument">
+
+
+
+
+
+			<xp:this.documentId><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId");
+return docId;}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
+	<xp:div styleClass="w3-container w3-center">
+		<h3>My Profile</h3>
+	</xp:div>
+
+<xp:div styleClass="w3-container w3-center">
+	
+	<xp:div styleClass="w3-row">
+		
+	
+<xp:label styleClass="w3-label w3-text-teal">
+				<b>Name :</b>
+			</xp:label>
+	
+	
+		<xp:inputText id="inputText1"
+			styleClass="w3-input w3-border w3-light-grey" readonly="true"
+			value="#{document1.name}">
+		</xp:inputText>
+
+	</xp:div>
+			<br />
+			
+	<xp:div styleClass="w3-row">
+		
+	
+<xp:label styleClass="w3-label w3-text-teal">
+				<b>CreatedAt :</b>
+			</xp:label>
+	
+	
+		<xp:inputText id="inputText2"
+			styleClass="w3-input w3-border w3-light-grey" readonly="true"
+			value="#{document1.created_date_time}">
+		</xp:inputText>
+
+	</xp:div>			
+			
+		<br />
+			
+	<xp:div styleClass="w3-row">
+		
+	
+<xp:label styleClass="w3-label w3-text-teal">
+				<b>Status :</b>
+			</xp:label>
+
+		<xp:inputTextarea id="inputTextarea1"
+			value="#{document1.status}">
+		</xp:inputTextarea>
+
+
+	</xp:div>			
+			
+			<br />
+			
+	<xp:div styleClass="w3-row">
+		
+	
+<xp:label styleClass="w3-label w3-text-teal">
+				<b>Telephone No :</b>
+			</xp:label>
+	
+	
+		<xp:inputText id="inputText3"
+			value="#{document1.phone_no}" >
+		</xp:inputText>
+
+	</xp:div>
+
+     			<br />
+     
+	<xp:div styleClass="w3-row">
+
+<xp:label styleClass="w3-label w3-text-teal">
+				<b>Dekstop Picture </b>
+			</xp:label>
+	
+	
+		<xp:fileUpload id="fileUpload1" value="#{document1.dp}"></xp:fileUpload>
+
+
+</xp:div>
+<xp:div>
+	<xp:button value="Submit" id="button1"><xp:eventHandler event="onclick" submit="true" refreshMode="complete"  immediate="false" save="false">
+	<xp:this.action>
+
+
+		<xp:actionGroup>
+			<xp:actionGroup>
+
+
+
+
+
+
+
+			</xp:actionGroup>
+
+			<xp:saveDocument var="document1"></xp:saveDocument>
+		</xp:actionGroup>
+	</xp:this.action></xp:eventHandler></xp:button>
+</xp:div>
+</xp:div>
+			
+
+		
+
+	<xp:eventHandler event="onClientLoad" submit="true"
+		refreshMode="partial">
+	</xp:eventHandler></xp:view>

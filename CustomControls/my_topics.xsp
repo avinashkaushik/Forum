@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:div styleClass="w3-container w3-center">
+ <h3>My Topic</h3>
+</xp:div>
+<xp:div>
+
+</xp:div>
+<xp:div>
+		
+		
+		<xp:table styleClass="w3-table w3-bordered">
+
+		<xp:repeat id="repeat1" rows="30" var="userTopic" first="0"
+			indexVar="i">
+			<xp:this.value><![CDATA[#{javascript:var user = @UserName()
+if(user !== ""){
+var v:NotesView = database.getView("allDocumentsByAuthor");
+//view.postScript("alert('"+user+"')")
+
+var vEntry:NotesViewEntryCollection = v.getAllEntriesByKey(user)
+return vEntry;
+
+}else{
+
+}}]]></xp:this.value>
+				<xp:tr styleClass="w3-hover-light-grey"
+					style="cursor:pointer" id="tr1">
+					<td>
+						<h4>
+							<xp:text escape="true"
+								id="computedField1">
+								<xp:this.value><![CDATA[#{javascript:var doc:NotesDocument=userTopic.getDocument();
+var title = doc.getItemValue("title");
+return title;}]]></xp:this.value>
+							</xp:text>
+						</h4>
+
+
+
+
+						<xp:text escape="true" id="computedField2"
+							style="color:rgb(128,128,128)">
+							<xp:this.value><![CDATA[#{javascript:var doc:NotesDocument=userTopic.getDocument();
+var title = doc.getItemValue("category");
+return "Category:"+title;}]]></xp:this.value>
+						</xp:text>
+					</td>
+					<td>
+						<xp:label id="label1" style="w3-right-align">
+							<xp:this.value><![CDATA[#{javascript:var doc:NotesDocument=userTopic.getDocument();
+var creator = doc.getItemValueString("created_by");
+
+ var properName = @Name("[CN]", creator );
+ var firstName = seperate(properName,3);
+ var middleName = seperate(properName,2);
+ var lastName = seperate(properName,1);
+
+ return firstName+" "+middleName+" "+lastName;
+
+}]]></xp:this.value>
+						</xp:label>
+						
+					</td>
+					<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+						<xp:this.action>
+							<xp:openPage>
+								<xp:this.name><![CDATA[#{javascript:var doc:NotesDocument = userTopic.getDocument();
+var docId = doc.getUniversalID();
+return "home.xsp?page=title_description&documentId="+docId;}]]></xp:this.name>
+							</xp:openPage>
+						</xp:this.action></xp:eventHandler></xp:tr>
+		</xp:repeat>
+
+		</xp:table>
+
+</xp:div>
+	</xp:view>

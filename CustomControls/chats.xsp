@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" action="openDocument">
+			<xp:this.documentId><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId")
+return docId;}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
+	<xp:div styleClass="w3-container w3-center">
+		<xp:label id="label1"
+			style="font-weight:bold;font-style:italic;text-decoration:underline;font-size:22pt">
+			<xp:this.value><![CDATA[#{javascript:var docId= context.getUrlParameter("documentId");
+					var doc:NotesDocument=database.getDocumentByUNID(docId);
+					var chatFriends= doc.getItemValueString("chatFriendsName");
+				//	return chatFriends;
+					var loggedInUser =  @Name("[CN]", @UserName());
+var rightSide = @Right(chatFriends,"|");
+var leftside = @Left(chatFriends,"|");
+if(rightSide == loggedInUser)
+return leftside;
+else
+return rightSide;}]]></xp:this.value>
+		</xp:label>
+		<xp:div style="overflow-y: auto; width:100%;height:400px;">
+		<xp:repeat id="repeat1" rows="30" first="0" var="vchatContent"
+			indexVar="i">
+			<xp:this.value><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId");
+var doc:NotesDocument = database.getDocumentByUNID(docId);
+var allResponses:NotesDocumentCollection = doc.getResponses();
+return allResponses;}]]>
+
+</xp:this.value>
+			
+			<xp:div style="width:60%">
+				<xp:this.styleClass><![CDATA[#{javascript:var message = vchatContent.getItemValueString("chatContent");
+var creator =  vchatContent.getItemValueString("chatAccount");
+var username = @UserName();
+
+
+if(username == creator){
+return "w3-panel w3-light-green w3-round-xlarge w3-right";
+}else{
+return "w3-panel w3-light-blue w3-round-xlarge w3-left"
+}}]]></xp:this.styleClass>
+				<xp:label id="label2" style="font-size:22pt">
+					<xp:this.value><![CDATA[#{javascript:
+var sender = vchatContent.getItemValue("chatContent");
+return sender;}]]></xp:this.value>
+				</xp:label>
+			</xp:div>
+
+		</xp:repeat>
+		</xp:div>
+		<xp:br></xp:br>
+	
+
+	<xp:br></xp:br>
+	<xp:div  style=" position: fixed;
+                bottom: 5%;
+                width: 70%;
+                height: 100px;">
+	
+	<xp:inputTextarea id="chatMsg" style="width:100%"></xp:inputTextarea>
+	
+	<xp:button value="Submit" id="button1">
+
+	<xp:eventHandler event="onclick" submit="true"
+		refreshMode="partial">
+
+
+		<xp:this.action><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId");
+var doc:NotesDocument = database.getDocumentByUNID(docId);
+
+
+var msg = getComponent("chatMsg").getValue();
+var responseDoc:NotesDocument = database.createDocument();
+responseDoc.replaceItemValue("Form", "message");
+responseDoc.replaceItemValue("chatContent",msg);
+responseDoc.replaceItemValue("chatAccount",@UserName());
+responseDoc.makeResponse(doc);
+responseDoc.save();
+}]]></xp:this.action>
+	</xp:eventHandler></xp:button>
+	</xp:div>
+		
+	</xp:div>
+</xp:view>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+
+
+	<xp:this.data>
+		<xp:dominoDocument var="document1" action="openDocument">
+			<xp:this.documentId><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId")
+return docId;}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
+		<xp:div styleClass=" w3-position-fixed w3-top-0%">
+	
+	<xp:div styleClass="w3-container w3-center"
+		style="color:rgb(0,0,0)">
+		<h3>
+			Description
+
+		</h3>
+	</xp:div>
+	<xp:div styleClass="w3-container">
+
+
+		<xp:div styleClass="w3-row">
+			<xp:div styleClass="w3-col m4 l1">
+				<xp:label styleClass="w3-label w3-text-teal">
+					<b>Title :</b>
+				</xp:label>
+			</xp:div>
+
+			<xp:div styleClass="w3-col m8 l11 w3-text-grey">
+
+				<!--  <xp:text escape="true" id="computedField1">
+					<xp:this.value><![CDATA[#{javascript:var docId= context.getUrlParameter("documentId");
+					var doc:NotesDocument=database.getDocumentByUNID(docId);
+					var title= doc.getItemValueString("title");
+					return title;}]]></xp:this.value>
+					</xp:text>-->
+			</xp:div>
+			<xp:div styleClass="w3-col m8 l11 w3-text-grey">
+				<xp:text escape="true" id="computedField3"
+					value="#{document1.title}">
+				</xp:text>
+			</xp:div>
+		</xp:div>
+		<br />
+
+		<xp:div styleClass="w3-row">
+			<xp:div styleClass="w3-col m4 l1">
+				<xp:label styleClass="w3-label w3-text-teal">
+					<b>Category :</b>
+				</xp:label>
+			</xp:div>
+
+			<xp:div styleClass="w3-col m8 l11 w3-text-grey">
+
+				<!-- <xp:text escape="true" id="computedField2">
+					<xp:this.value><![CDATA[#{javascript:var docId= context.getUrlParameter("documentId");
+					var doc:NotesDocument=database.getDocumentByUNID(docId);
+					var category= doc.getItemValueString("category");
+					return category;}]]></xp:this.value>
+					</xp:text>-->
+				<xp:text escape="true" id="computedField1"
+					value="#{document1.category}">
+				</xp:text>
+			</xp:div>
+		</xp:div>
+		<br />
+
+		<xp:div styleClass="w3-row">
+			<xp:div styleClass="w3-col m4 l2">
+				<xp:label styleClass="w3-label w3-text-teal">
+					<b>Description :</b>
+				</xp:label>
+			</xp:div>
+
+			<xp:div styleClass="w3-col m8 l10 w3-text-grey">
+
+				<!-- <xp:inputRichText id="inputRichText1"
+					showReadonlyAsDisabled="true">
+
+					<xp:this.defaultValue><![CDATA[#{javascript:var docId= context.getUrlParameter("documentId");
+					var doc:NotesDocument=database.getDocumentByUNID(docId);
+					var description= doc.getItemValueString("desc");
+					return "hgjfcyyikf"+description;}]]></xp:this.defaultValue>
+					</xp:inputRichText>-->
+				<xp:inputRichText id="inputRichText1"
+					value="#{document1.desc}">
+				</xp:inputRichText>
+			</xp:div>
+		</xp:div>
+		</xp:div>
+		<br />
+
+	</xp:div>
+			<xc:cc_comments></xc:cc_comments>
+	
+</xp:view>

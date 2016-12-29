@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="6525806C002C42C0" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="242" sequence="4" unid="9DD876F6A66C4A5A65258098002A5457">
+<created><datetime>20161229T131221,03+0530</datetime></created>
+<modified><datetime>20161229T131221,28+0530</datetime></modified>
+<revised><datetime>20161229T131221,27+0530</datetime></revised>
+<lastaccessed><datetime>20161229T131221,28+0530</datetime></lastaccessed>
+<addedtofile><datetime>20161229T131221,04+0530</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=avinash arvind kaushik/O=dot</name></updatedby>
+<wassignedby><name>CN=avinash arvind kaushik/O=dot</name></wassignedby>
+<item name="$TITLE"><text>all_chats.xsp</text></item>
+<item name="$Flags"><text>gC~4;</text></item>
+
+
+<item name="$FileNames" sign="true"><text>all_chats.xsp</text></item>
+
+</note>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+
+
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="topics"></xp:dominoDocument>
+	</xp:this.data>
+	<xp:div styleClass="w3-container w3-center">
+		<h3>New Topic</h3>
+	</xp:div>
+
+	<br />
+	<br />
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Title</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="inputText1"
+				styleClass="w3-input w3-border w3-light-grey"
+				value="#{document1.title}">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+
+
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Category</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:comboBox id="comboBox1" styleClass="w3-input"
+				value="#{document1.category}">
+				<xp:selectItem itemLabel="----SELECT CATEGORY---------"
+					itemValue="science">
+				</xp:selectItem>
+
+				<xp:selectItem itemLabel="Science"
+					itemValue="science">
+				</xp:selectItem>
+				<xp:selectItem itemLabel="Maths" itemValue="maths"></xp:selectItem>
+				<xp:selectItem itemLabel="Physics"
+					itemValue="physics">
+				</xp:selectItem>
+				<xp:selectItem itemLabel="Chemistry"
+					itemValue="chemistry">
+				</xp:selectItem>
+			</xp:comboBox>
+		</xp:div>
+	</xp:div>
+	<br />
+
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Description</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+
+			<xp:inputRichText id="inputRichText1"
+				value="#{document1.desc}">
+			</xp:inputRichText>
+		</xp:div>
+	</xp:div>
+	<xp:inputHidden id="inputText2" rendered="true"
+		value="#{document1.created_by}"
+		defaultValue="#{javascript:return @UserName()}"
+		>
+	</xp:inputHidden>
+	<br />
+	<xp:button value="SUBMIT TOPIC" id="button3"
+		styleClass="w3-btn-block w3-teal">
+		
+	<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+		<xp:this.action>
+
+			<xp:actionGroup>
+
+
+				<xp:openPage name="home.xsp?page=all_topics"></xp:openPage>
+				<xp:saveDocument var="document1"></xp:saveDocument>
+			</xp:actionGroup>
+		</xp:this.action></xp:eventHandler></xp:button>
+</xp:view>

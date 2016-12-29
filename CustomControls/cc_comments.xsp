@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+
+		<xp:label value="Comments" id="label1"></xp:label>
+<xp:div style="overflow-y: auto; width:100%;height:400px;">
+		<xp:repeat id="repeat1" rows="30" first="0" var="vcomments"
+			indexVar="i">
+			<xp:this.value><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId");
+var doc:NotesDocument = database.getDocumentByUNID(docId);
+var allResponses:NotesDocumentCollection = doc.getResponses();
+return allResponses;}]]></xp:this.value>
+			
+			<xp:div style="width:60%">
+				<xp:this.styleClass><![CDATA[#{javascript:var created_by = vcomments.getItemValueString("commentedBy");
+var username = @UserName();
+
+
+if(username == created_by){
+return "w3-panel w3-light-green w3-round-xlarge w3-right";
+}else{
+return "w3-panel w3-light-blue w3-round-xlarge w3-left"
+}}]]></xp:this.styleClass>
+				<xp:label id="label2">
+					<xp:this.value><![CDATA[#{javascript:
+var sender = vcomments.getItemValue("comment");
+return sender;}]]></xp:this.value>
+				</xp:label>
+			</xp:div>
+
+		</xp:repeat>
+		</xp:div>
+		<xp:br></xp:br>
+	<xp:div style=" 
+                 width: 7%;
+                height: 100px;"
+                >
+
+	<xp:text escape="true" id="computedField1"></xp:text>
+	</xp:div>
+
+	<xp:br></xp:br>
+	<xp:div  style=" position: fixed;
+                bottom: 7%;
+                width: 70%;
+                height: 100px;">
+	
+	<xp:inputTextarea id="comment" style="width:100%"></xp:inputTextarea>
+	
+	<xp:button value="Submit" id="button1">
+
+	<xp:eventHandler event="onclick" submit="true"
+		refreshMode="partial">
+
+
+		<xp:this.action><![CDATA[#{javascript:var docId = context.getUrlParameter("documentId");
+var doc:NotesDocument = database.getDocumentByUNID(docId);
+
+
+var comment = getComponent("comment").getValue();
+var responseDoc:NotesDocument = database.createDocument();
+responseDoc.replaceItemValue("Form", "comment");
+responseDoc.replaceItemValue("comment",comment);
+responseDoc.replaceItemValue("commentedBy",@UserName());
+responseDoc.makeResponse(doc);
+responseDoc.save();
+}]]></xp:this.action>
+	</xp:eventHandler></xp:button>
+	</xp:div>
+</xp:view>
