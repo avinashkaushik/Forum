@@ -1,40 +1,43 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note class='view' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
  replicaid='6525806C002C42C0'>
-<noteinfo noteid='1d2' unid='082AC6766119D67D6525806C0032331E' sequence='1'>
-<created><datetime>20161115T143818,86+0530</datetime></created>
-<modified><datetime>20161115T143819,26+0530</datetime></modified>
-<revised><datetime>20161115T143819,25+0530</datetime></revised>
-<lastaccessed><datetime>20161115T143819,26+0530</datetime></lastaccessed>
-<addedtofile><datetime>20161115T143819,26+0530</datetime></addedtofile></noteinfo>
+<noteinfo noteid='25e' unid='D0A122456DB6E1E165258098004B1DAB' sequence='1'>
+<created><datetime>20161229T191027,95+0530</datetime></created>
+<modified><datetime>20161229T191027,96+0530</datetime></modified>
+<revised><datetime>20161229T191027,95+0530</datetime></revised>
+<lastaccessed><datetime>20161229T191027,96+0530</datetime></lastaccessed>
+<addedtofile><datetime>20161229T191027,96+0530</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=avinash arvind kaushik/O=dot</name></updatedby>
 <wassignedby><name>CN=avinash arvind kaushik/O=dot</name></wassignedby>
 <item name='$FormatNote' summary='true'>
 <rawitemdata type='4'>
 AQBTf1XmHQuJec/ALABRgCVl
 </rawitemdata></item>
-<item name='$TITLE' sign='true'><text>allDocumentsByUser</text></item>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>allDocumentsByFriends</text></item>
 <item name='$Index' sign='true'><text/></item>
 <item name='$Formula' summary='true' sign='true'><formula compiled='true'>
-VgACAA4AAwAkMTMAoAADAAUAHgAaAAMAAwAJAAQAJDEzJENvbmZsaWN0JFJFRgQABAAAABoABQAE
-AGZvcm0BAAYAdG9waWNzCgIDAAcACgAEAAlMMVM=
+cAAFAEQAPwAFAA8ACwAKAAkABABjaGF0RnJpZW5kc05hbWVjaGF0Q29udGVudGNyZWF0ZWRfYnkk
+Q29uZmxpY3QkUkVGAAQABAAAABwABQAEAGZvcm0BAAcAbWVzc2FnZQAKAgMABwAKAAQACUwxUw==
 </formula></item>
-<item name='$FormulaClass' sign='true'><text>1</text></item>
 <item name='$Collation' summary='true'>
 <rawitemdata type='2'>
-BgAAAABE
+HAABAABEiGYHAAAPAGNoYXRGcmllbmRzTmFtZQ==
 </rawitemdata></item>
 <item name='$ViewFormat' summary='true' sign='true'>
 <rawitemdata type='5'>
-AQABAA4ACAAAAFZDAAADAAQAEAAAAFAAAQAACgAAAAAAAAAAAAICAAAAJDEzZGVzYxAAAgAOAAMA
-JDEzAKAAAwAmAAEAAAABAQAJAQAACgEBDgoAAAEArSsBAAEAAQAAAAAAAAAAAFdDAQEACQAAAAAA
-AAAAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAAAAAAAAAAAAABCABAAAAABAP///wAFAP///wABAAAA
-AAAAAAAAAAAAAAEA////AAEA////AAAAAQAAAAAAAQAAAAAAAQAAAAAAAAAIAAAAAAABAA==
+AQADABIACAAAAFZDAwAPAAwAAAAAAAgBAQAACgABAAAAAAAAAAICAAAAVkMAAAsACAAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABWQwAACgAAAAAAAABQAAEAAAoAAAAAAAAAAAACAgAAAGNoYXRGcmll
+bmRzTmFtZWNoYXRfRnJpZW5kc2NoYXRDb250ZW50bWVzc2FnZXNjcmVhdGVkX2J5JgABAAAAAQEA
+CQEAAAoBAQ4KAAABAK0rAQABAAEAAAAAAAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAEAAAA
+AAD//wAAAAAAAAAAAAAAAAAAV0MBAQAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAA
+AAAAAAAAAFdDAQEACQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAAAAAAAAAAAAABCABAA
+AAABAP///wAFAP///wABAAAAAAAAAAAAAAAAAAEA////AAEA////AAAAAQAAAAAAAQAAAAAAAQAA
+AAAAAAAIAAAAAAABAA==
 </rawitemdata></item>
 <item name='$Comment' sign='true'><text/></item>
 <item name='$Flags'><text>PY</text></item>
 <item name='$DesignerVersion'><text>8.5.3</text></item>
-<item name='$ViewInheritedFrom'><text>all</text></item>
 <item name='$V5ACTIONS' sign='true'>
 <rawitemdata type='1'>
 vRw/AAAAAQABAAAAAQAAAAAAAAAAAAAACAACAHn/bAABAPDw8AABAAAAAAAJAAAAAAABAPDw8AAA
@@ -45,9 +48,9 @@ AQBOfL7/KAAAAAUAAACdAQAADgAAAAAAAABfRWRpdCBEb2N1bWVudAIAAgq+/ygAAAAFAAAAnQEA
 AA4AAAAAAAAAX1NlbmQgRG9jdW1lbnQDAAMKvv8iAAAABQAAAJ0BAAAIAAAAAAAAAF9Gb3J3YXJk
 BAAECr7/LAAAAAUAAACdAQAAEgAAAAAAAABfTW92ZSBUbyBGb2xkZXIuLi4FAD18vv8uAAAABQAA
 AJ0BAAATAAAAAAAAAF9SZW1vdmUgRnJvbSBGb2xkZXIABgA+fL7/IAAAAAUAAACdAQAABQAAAAAA
-AABfUmVhZAkHAF58vv8iAAAABQAAAJ0BAAAHAAAAAAAAAF9VbnJlYWQACABufL7/LgAAAAUAAACd
-AQAAEwAAAAAAAABfT3BlbiBpbiBOZXcgV2luZG93dwkAfny+/yQAAAAFAAAAnQEAAAkAAAAAAAAA
-X1ByaW50Li4uAAoAjny+/yIAAAAFAAAAnQEAAAcAAAAAAAAAX0RlbGV0ZQALAJ58vv8uAAAABQAA
+AABfUmVhZAAHAF58vv8iAAAABQAAAJ0BAAAHAAAAAAAAAF9VbnJlYWQACABufL7/LgAAAAUAAACd
+AQAAEwAAAAAAAABfT3BlbiBpbiBOZXcgV2luZG93qgkAfny+/yQAAAAFAAAAnQEAAAkAAAAAAAAA
+X1ByaW50Li4uqgoAjny+/yIAAAAFAAAAnQEAAAcAAAAAAAAAX0RlbGV0ZQALAJ58vv8uAAAABQAA
 AJ0BAAAUAAAAAAAAAF9Eb2N1bWVudCBQcm9wZXJ0aWVzDACufL7/HgAAAAUAAACdAQAABAAAAAAA
 AABDX3V0DQC+fL7/IAAAAAUAAACdAQAABQAAAAAAAABfQ29weQAOAM58vv8wAAAABQAAAJ0BAAAW
 AAAAAAAAAENvcHkgYXMgRG9jdW1lbnQgX0xpbmsPAN58vv8oAAAABQAAAJ0BAAAOAAAAAAAAAENv
