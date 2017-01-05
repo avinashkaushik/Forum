@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">	
+
+	<xp:this.resources>
+		<xp:styleSheet href="/w3.css"></xp:styleSheet>
+				<xp:styleSheet href="font-awesome-4.7.0/css/font-awesome.css"></xp:styleSheet>
+		
+		<xp:script src="/default.jss" clientSide="false"></xp:script>
+		
+	</xp:this.resources>
+	
+	
+	
+	
+	
+	
+	
+	<xp:this.afterPageLoad><![CDATA[#{javascript:var loggedInUser =  @Name("[CN]", @UserName());
+
+var v:NotesView = database.getView("profile");
+var dc:NotesDocumentCollection = v.getAllDocumentsByKey(loggedInUser);
+  
+//view.postScript("alert('"+phoneNo+"')")
+
+if(dc.getCount() == 0)
+{
+  
+var doc:NotesDocument = database.createDocument();
+doc.replaceItemValue("Form", "profile");
+doc.replaceItemValue("name",loggedInUser);
+doc.replaceItemValue("created_date_time",session.createDateTime(@Now()));
+doc.save(true);
+docId=doc.getUniversalID();
+var url1= "home.xsp?page=my_profile&documentId="+ docId + "&action=editDocument";
+return url1
+view.postScript("window.open('"+url1+"','_self','','')");
+
+return false;
+//view.postScript("'+loggedInUser+'")
+    
+}
+else
+   {
+     var doc:NotesDocument = dc.getFirstDocument();
+     var phoneNo =doc.getItemValueString("phone_no");
+     if(phoneNo == ""){
+      if(context.getUrlParameter("page")!="my_profile"){
+ //   view.postScript("alert('INSIDE PHONE WMPTYU')")
+       var docId1=doc.getUniversalID();
+       var url= "home.xsp?page=my_profile&documentId="+ docId1 + "&action=editDocument";
+        // return url
+ 
+         view.postScript("window.open('"+url+"','_self','','')");
+         // return false;
+          }else{
+          
+          }
+   }
+   
+   
+   }
+}]]></xp:this.afterPageLoad>
+	<xc:cc_header></xc:cc_header>
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col w3-container m4 l2 w3-light-grey "
+			style="min-height:100% !important;height:auto !important">
+			<xc:cc_leftNavigation></xc:cc_leftNavigation>
+		</xp:div>
+
+
+		<xp:div
+			styleClass="w3-col w3-container m8 l10 w3-animate-opacity">
+
+			<xc:cc_all_topic>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName= context.getUrlParameter("page")
+if(pageName == "all_topics")
+return true
+else
+return false}]]></xc:this.rendered>
+			</xc:cc_all_topic>
+
+			<xc:title_description>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName= context.getUrlParameter("page")
+if(pageName == "title_description")
+{
+return true
+}
+else{
+return false
+}
+}]]></xc:this.rendered>
+				,
+			</xc:title_description>
+			<xc:cc_create_new_topic>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName= context.getUrlParameter("page")
+if(pageName == "create_new_topic")
+{
+return true
+}
+else{
+return false
+}
+}]]></xc:this.rendered>
+			</xc:cc_create_new_topic>
+
+			<xc:my_topics>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName=context.getUrlParameter("page")
+if(pageName == "my_topics")
+return true;
+else
+return false;}]]></xc:this.rendered>
+			</xc:my_topics>
+
+			<xc:my_profile>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName=context.getUrlParameter("page")
+if(pageName == "my_profile")
+return true;
+else
+return false;
+}]]></xc:this.rendered>
+			</xc:my_profile>
+
+			<xc:all_chats>
+
+				<xc:this.rendered><![CDATA[#{javascript:var pageName=context.getUrlParameter("page")
+var chatname=context.getUrlParameter("chat")
+//view.postScript("alert('"+chatname+"')")
+if(pageName == "chats" && chatname=="")
+return true;
+else
+return false;}]]></xc:this.rendered>
+			</xc:all_chats>
+			<xc:chats>
+				<xc:this.rendered><![CDATA[#{javascript:var chatname=context.getUrlParameter("chat")
+
+if(chatname != "")
+return true;
+else
+return false;}]]></xc:this.rendered>
+			</xc:chats>
+			
+			<xc:cc_mail><xc:this.rendered><![CDATA[#{javascript:var pageName= context.getUrlParameter("page")
+if(pageName == "mail")
+return true
+else
+return false}]]></xc:this.rendered></xc:cc_mail>
+
+
+			<xc:cc_meeting>
+				<xc:this.rendered><![CDATA[#{javascript:var pageName= context.getUrlParameter("page")
+if(pageName == "meeting")
+return true
+else
+return false}]]></xc:this.rendered>
+			</xc:cc_meeting>
+		</xp:div>
+
+	</xp:div>
+	<xp:div
+		style=" position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 70px;">
+
+		<xc:cc_footer></xc:cc_footer>
+	</xp:div>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+
+	</xp:view>
