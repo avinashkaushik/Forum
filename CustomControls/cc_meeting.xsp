@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="memo"></xp:dominoDocument>
+	</xp:this.data>
+	<xp:div styleClass="w3-container w3-center">
+		<h3>Meeting Plan</h3>
+	</xp:div>
+
+	<br />
+	<br />
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Title</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="title"
+				styleClass="w3-input w3-border w3-light-grey"
+				value="#{document1.title}">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+
+
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Recepients</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			
+					<xp:inputTextarea id="recepients"
+						styleClass="w3-input w3-border w3-light-grey"
+						value="#{document1.recepients}" multipleTrim="true"
+						multipleSeparator="#{javascript:return '\n';}">
+
+					</xp:inputTextarea>
+					<p class="w3-right w3-padding">
+	<xe:namePicker id="namePicker1" for="recepients">
+
+
+
+		<xe:this.dataProvider>
+			<xe:dominoNABNamePicker addressBookDb="names.nsf"
+				nameList="people">
+			</xe:dominoNABNamePicker>
+		</xe:this.dataProvider>
+	</xe:namePicker></p>
+		</xp:div>
+	</xp:div>
+	<br />
+
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Description</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+
+			<xp:inputRichText id="description"
+				value="#{document1.desc}">
+			</xp:inputRichText>
+		</xp:div>
+	</xp:div>
+	<xp:inputHidden id="inputText2" rendered="true"
+		value="#{document1.created_by}"
+		defaultValue="#{javascript:return @UserName()}">
+	</xp:inputHidden>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Start Time</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="starttime"
+				styleClass="w3-input w3-border w3-light-grey"
+				value="#{document1.start_time}"
+				defaultValue="#{javascript:@Now()}">
+				<xp:dateTimeHelper id="dateTimeHelper1"></xp:dateTimeHelper>
+				 <xp:this.converter>
+  <xp:convertDateTime pattern="dd.MM.yyyy HH:mm" type="both" />
+ </xp:this.converter>
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>End Time</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			
+            <xp:inputText id="endtime"
+            	styleClass="w3-input w3-border w3-light-grey"
+            	value="#{document1.end_time}">
+            	<xp:dateTimeHelper id="dateTimeHelper2"></xp:dateTimeHelper>
+            	 <xp:this.converter>
+  <xp:convertDateTime pattern="dd.MM.yyyy HH:mm" type="both" />
+ </xp:this.converter>
+            	
+            	 <xp:eventHandler event="onchange" submit="true"
+            	 	refreshMode="partial" refreshId="timeDuration">
+            	 	<xp:this.action><![CDATA[#{javascript:
+var startDate = getComponent( "starttime" ).getValue();
+var endDate  = getComponent( "endtime" ).getValue();
+    var nDateStart = session.createDateTime( startDate );
+    var nDateEnd = session.createDateTime( endDate );
+    
+
+
+startDate
+//var jdts  = startDate.NotesDateTime;
+//var jdte  = endDate.NotesDateTime;
+
+var difference = nDateEnd.timeDifference(nDateStart)/60; 
+ getComponent("timeDuration").setValue(difference);
+//view.postScript("window.open('"+nDateStart+"','_self','','')");
+
+//var stDate = nDateStart.toJavaDate();
+
+//var enDate = nDateEnd.toJavaDate();
+
+
+ ///  var difference = enDate.timeDifference(stDate); 
+ // var  diff = (Math.floor(difference/86400)) + 1;
+    //return difference;
+  //  getComponent("timeDuration").setValue(diff);}]]></xp:this.action>
+            	 </xp:eventHandler></xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>Duration</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="timeDuration"
+				styleClass="w3-input w3-border w3-light-grey"
+				value="#{document1.duration}">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	<xp:button value="Send Invitation Mail" id="button3"
+		styleClass="w3-btn-block w3-teal">
+
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="partial">
+			<xp:this.action>
+
+				<xp:actionGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<xp:executeScript>
+						<xp:this.script><![CDATA[#{javascript://var to:java.util.Vector = new java.util.Vector();
+
+var to=getComponent("recepients").getValue();
+var subject=getComponent("title").getValue();
+var content=getComponent("description").getValue();
+var stime=getComponent("starttime").getValue();
+var etime=getComponent("endtime").getValue();
+var duration=getComponent("timeDuration").getValue();
+var sender=@UserName();
+var maincontent= "<html>"+"Hello Sir/Madam, kindly set your meeting between"+stime+
+                  "to"+etime
+                 "</html>"
+var contentbody= "<html>"+"From"+"<br>"+sender+  
+          +"<br>"+"<br>"+"Subject: "+subject+
+          +"<br>"+"<p>"+maincontent+"</p>"
+           "</html>";
+//view.postScript("alert('"+content+"')");
+for(var i =0; i<to.size(); i++ )
+{
+//view.postScript("alert('"+to[i]+"')");
+
+
+var doc:NotesDocument= database.createDocument();
+//var RTBody:NotesRichTextItem=doc.createRichTextItem("body");
+doc.replaceItemValue('form','memo');
+doc.replaceItemValue('sendto',to[i]);
+doc.replaceItemValue('subject',subject);
+//doc.replaceItemValue('content',contentbody);
+
+
+var stream  = session.createStream();
+
+	stream.writeText(" <html><body>Hello <b><h3>"+to[i]+"</h3></b><p>You are invited for the meeting from "+stime+" to "+etime+"</p><br><br>Regards<p> "+@Name('[CN]',@UserName())+"</body></html>");
+	var entity:NotesMIMEEntity = doc.createMIMEEntity("body");
+	entity.setContentFromText(stream,"text/html;charset=UTF-8", 1725);
+	stream.close()
+
+doc.send();
+}
+}]]></xp:this.script>
+					</xp:executeScript>
+					<xp:saveDocument var="document1"></xp:saveDocument>
+
+				</xp:actionGroup>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<br />
+	<br />
+	
+</xp:view>

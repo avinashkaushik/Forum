@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="memo"></xp:dominoDocument>
+	</xp:this.data>
+	<xp:div styleClass="w3-container w3-center">
+		<h3>Mail</h3>
+	</xp:div>
+
+	<br />
+	<br />
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>To</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="reciever"
+				styleClass="w3-input w3-border w3-light-grey">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>cc</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="cc"
+				styleClass="w3-input w3-border w3-light-grey">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>subject</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputText id="subject"
+				styleClass="w3-input w3-border w3-light-grey">
+			</xp:inputText>
+		</xp:div>
+	</xp:div>
+	<br />
+	
+	<xp:div styleClass="w3-row">
+		<xp:div styleClass="w3-col m4 l1">
+			<xp:label styleClass="w3-label w3-text-teal">
+				<b>body</b>
+			</xp:label>
+		</xp:div>
+		<xp:div styleClass="w3-col m8 l11">
+			<xp:inputRichText id="body" value="#{document1.body}"></xp:inputRichText>
+		</xp:div>
+	</xp:div>
+	<br />
+	<xp:button value="Send" id="button1" styleClass="w3-btn w3-round-xxlarge w3-teal  w3-center">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action><![CDATA[#{javascript:var to=getComponent("reciever").getValue();
+var subject=getComponent("subject").getValue();
+var content=getComponent("body").getValue();
+view.postScript("alert('"+content+"')");
+
+var doc:NotesDocument= database.createDocument();
+//var RTBody:NotesRichTextItem=doc.createRichTextItem("body");
+doc.replaceItemValue('form','memo');
+doc.replaceItemValue('sendto',to);
+doc.replaceItemValue('subject',subject);
+
+
+var stream  = session.createStream();
+
+	stream.writeText(document1.getItemValue("body").firstElement());
+	var entity:NotesMIMEEntity = doc.createMIMEEntity("body");
+	entity.setContentFromText(stream,"text/html;charset=UTF-8", 1725);
+	stream.close()
+
+doc.send();
+doc.save();
+}]]></xp:this.action>
+		</xp:eventHandler></xp:button>
+</xp:view>

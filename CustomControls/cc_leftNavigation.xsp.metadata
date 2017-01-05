@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="6525806C002C42C0" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="22a" sequence="4" unid="E219CB3AFEF1F3B965258098002A53BF">
-<created><datetime>20161229T131219,51+0530</datetime></created>
-<modified><datetime>20161229T131219,72+0530</datetime></modified>
-<revised><datetime>20161229T131219,71+0530</datetime></revised>
-<lastaccessed><datetime>20161229T131219,72+0530</datetime></lastaccessed>
-<addedtofile><datetime>20161229T131219,52+0530</datetime></addedtofile></noteinfo>
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="65258099002C1A91" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="262" sequence="8" unid="66F6D291865CACB96525809F0033810D">
+<created><datetime>20170105T145233,73+0530</datetime></created>
+<modified><datetime>20170105T145234,86+0530</datetime></modified>
+<revised><datetime>20170105T145234,85+0530</datetime></revised>
+<lastaccessed><datetime>20170105T145234,86+0530</datetime></lastaccessed>
+<addedtofile><datetime>20170105T145233,74+0530</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=avinash arvind kaushik/O=dot</name></updatedby>
 <wassignedby><name>CN=avinash arvind kaushik/O=dot</name></wassignedby>
 <item name="$TITLE"><text>cc_leftNavigation.xsp</text></item>
@@ -12,5 +12,11 @@
 
 
 <item name="$FileNames" sign="true"><text>cc_leftNavigation.xsp</text></item>
+
+
+<item name="$DesignerVersion"><text>8.5</text></item>
+
+
+
 
 </note>

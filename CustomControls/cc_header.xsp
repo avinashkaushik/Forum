@@ -4,14 +4,15 @@
 	<xp:panel>
 
 	<header class="w3-container w3-teal ">
-  <h1>FORUM</h1>
+	
+	<h1>FORUM</h1>
+	<xp:link escape="true" text="Settings" id="link3" styleClass="w3-right fa fa-user fa-lg"></xp:link>
 
-  
-  <xp:link escape="true" text="Logout" id="link2"
+	<xp:link escape="true" text="Logout" id="link2"
   	styleClass="w3-right w3-text-white">
   <xp:this.value><![CDATA[#{javascript:return facesContext.getExternalContext().getRequest().getContextPath() + '?Logout&redirectTo=' + facesContext.getExternalContext().getRequest().getContextPath()}]]></xp:this.value></xp:link>
   <xp:label id="link1"
-  	styleClass="w3-right w3-text-white w3-padding-right">
+  	styleClass="w3-right fa-fa-cog w3-padding-right">
   	<xp:this.value><![CDATA[#{javascript:var loggedinUser= @Name("[CN]", @UserName() ); 
 
  var firstName = seperate(loggedinUser,3);

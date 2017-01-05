@@ -86,6 +86,35 @@ return "w3-btn-block w3-light-grey w3-left-align"
     	    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
     	    		<xp:this.action>
     	    			<xp:openPage name="/home.xsp?page=chats"></xp:openPage>
+    	    		</xp:this.action></xp:eventHandler></xp:button></li> 
+    	    		
+    	    		 	    		
+    <li>	
+    <xp:button value="Mail" id="button2">
+    		    		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "mail"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    	    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
+    	    		<xp:this.action>
+    	    			<xp:openPage name="/home.xsp?page=mail"></xp:openPage>
+    	    		</xp:this.action></xp:eventHandler></xp:button></li> 	 
+    	    		
+    	    		
+    	    		 <li>	
+    <xp:button value="Meetings" id="button4"
+    		>
+    		    		<xp:this.styleClass><![CDATA[#{javascript:var pageName = context.getUrlParameter("page");
+if(pageName == "meeting"){
+return "w3-btn-block w3-teal w3-left-align"
+}else{
+return "w3-btn-block w3-light-grey w3-left-align"
+}}]]></xp:this.styleClass>
+    	    	<xp:eventHandler event="onclick" submit="true" refreshMode="partial">
+    	    		<xp:this.action>
+    	    			<xp:openPage name="/home.xsp?page=meeting"></xp:openPage>
     	    		</xp:this.action></xp:eventHandler></xp:button></li> 	    		
   </ul>
 </xp:view>
